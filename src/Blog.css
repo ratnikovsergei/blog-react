@@ -32,11 +32,25 @@ a {
     box-shadow: 0px 5px 30px #000;
   }
 
+  .footer {
+    height: 120px;
+    width: 1000px;
+    border-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    box-shadow: 0px 5px 30px #000;
+  }
+
   .cp-buttons {
     @apply cursor-pointer text-[24px] mt-[5px];
   }
 
   .shadow-text {
     text-shadow: 0px 2px 3px black;
+  }
+
+  .temperature {
+    @apply text-white p-1 text-[12px] rounded-full bg-gray-800;
   }
 }

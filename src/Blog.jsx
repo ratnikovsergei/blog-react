@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { AppColumn, Header } from './components';
+import { AppColumn, Header, Footer } from './components';
 import './Blog.css';
 
 const Content = () => (
@@ -16,7 +16,6 @@ const Content = () => (
     </Routes>
   </div>
 );
-const Footer = () => <div>Низ страницы</div>;
 
 export const Blog = () => {
   return (
