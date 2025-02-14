@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
+import { AppColumn, Header } from './components';
 import './Blog.css';
 
-const Header = () => <div>Шапка</div>;
 const Content = () => (
-  <div className="p-[120px]">
-    <h2>Контент страницы</h2>
+  <div className="pt-[140px] pb-[140px]">
+    <h2 className="text-center text-2xl">Контент страницы</h2>
     <Routes>
       <Route path="/" element={<div>Главная страница</div>} />
       <Route path="/login" element={<div>Авторизация</div>} />
@@ -20,10 +20,10 @@ const Footer = () => <div>Низ страницы</div>;
 
 export const Blog = () => {
   return (
-    <>
+    <AppColumn>
       <Header />
       <Content />
       <Footer />
-    </>
+    </AppColumn>
   );
 };
