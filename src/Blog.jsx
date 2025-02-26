@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { AppColumn, Header, Footer } from './components';
-import { Authorization } from './pages';
+import { Authorization, Registration } from './pages';
 import './Blog.css';
 
 const Content = () => (
@@ -8,7 +8,7 @@ const Content = () => (
     <Routes>
       <Route path="/" element={<div>Главная страница</div>} />
       <Route path="/login" element={<Authorization />} />
-      <Route path="/register" element={<div>Регистрация</div>} />
+      <Route path="/register" element={<Registration />} />
       <Route path="/users" element={<div>Пользователи</div>} />
       <Route path="/post" element={<div>Новая статья</div>} />
       <Route path="/post/:postId" element={<div>Статья</div>} />

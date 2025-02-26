@@ -6,13 +6,39 @@
       "password": "qwerty123",
       "registered_at": "2050-09-22",
       "role_id": 0
+    },
+    {
+      "id": "54e5",
+      "login": "ivan",
+      "password": "qwerty123",
+      "registered_at": "2043-02-04 16:30",
+      "role_id": 2
+    },
+    {
+      "id": "9397",
+      "login": "petr",
+      "password": "qwerty123",
+      "registered_at": "2048-03-27 11:30",
+      "role_id": 2
     }
   ],
   "roles": [
-    { "id": 0, "name": "Администратор" },
-    { "id": 1, "name": "Модератор" },
-    { "id": 2, "name": "Читатель" },
-    { "id": 3, "name": "Гость" }
+    {
+      "id": "0",
+      "name": "Администратор"
+    },
+    {
+      "id": "1",
+      "name": "Модератор"
+    },
+    {
+      "id": "2",
+      "name": "Читатель"
+    },
+    {
+      "id": "3",
+      "name": "Гость"
+    }
   ],
   "posts": [
     {

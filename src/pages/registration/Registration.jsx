@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,7 +11,7 @@ import { setUser } from '../../store/actions';
 import { selectUserRole } from '../../store/selectors';
 import { ROLE } from '../../constants';
 
-const authFormSchema = yup.object().shape({
+const regFormSchema = yup.object().shape({
   login: yup
     .string()
     .required('Заполните поле логин')
@@ -20,13 +20,17 @@ const authFormSchema = yup.object().shape({
     .max(15, 'Неверно заполнен логин. Максимум 15 символов'),
   password: yup
     .string()
-    .required('Впишите пожалуйста пароль')
+    .required('Придумайте пароль')
     .matches(/^[\w#%]+$/, 'Неверно заполнен пароль. Допускаются буквы, цифры и знаки # %')
     .min(6, 'Длина пароля должна быть не менее 6 символов')
     .max(30, 'Длина пароля не должна превышать 30 символов'),
+  passcheck: yup
+    .string()
+    .required('Повторите пароль')
+    .oneOf([yup.ref('password'), null], 'Введенные пароли не совпадают'),
 });
 
-export const Authorization = () => {
+export const Registration = () => {
   const {
     register,
     reset,
@@ -36,8 +40,9 @@ export const Authorization = () => {
     defaultValues: {
       login: '',
       password: '',
+      passcheck: '',
     },
-    resolver: yupResolver(authFormSchema),
+    resolver: yupResolver(regFormSchema),
   });
 
   const [serverError, setServerError] = useState(null);
@@ -47,7 +52,7 @@ export const Authorization = () => {
   useResetForm(reset);
 
   const onSubmit = ({ login, password }) => {
-    server.authorize(login, password).then(({ error, response }) => {
+    server.register(login, password).then(({ error, response }) => {
       if (error) {
         setServerError(`Ошибка: ${error}`);
         return;
@@ -56,7 +61,8 @@ export const Authorization = () => {
     });
   };
 
-  const formError = errors?.login?.message || errors?.password?.message;
+  const formError =
+    errors?.login?.message || errors?.password?.message || errors?.passcheck?.message;
   const errorMessage = formError || serverError;
 
   if (roleId !== ROLE.GUEST) {
@@ -65,7 +71,7 @@ export const Authorization = () => {
 
   return (
     <div className="authform">
-      <span className="text-2xl text-center font-bold m-5">Авторизация</span>
+      <span className="text-2xl text-center font-bold m-5">Регистрация</span>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"
@@ -77,13 +83,15 @@ export const Authorization = () => {
           placeholder="Пароль..."
           {...register('password', { onChange: () => setServerError(null) })}
         />
+        <Input
+          type="password"
+          placeholder="Подтвердите пароль..."
+          {...register('passcheck', { onChange: () => setServerError(null) })}
+        />
         <Button type="submit" disabled={!!formError}>
-          Авторизоваться
+          Зарегистрироваться
         </Button>
         {errorMessage && <AuthFormError>{errorMessage}</AuthFormError>}
-        <Link to="/register" className="mt-5 text-center">
-          Регистрация
-        </Link>
       </form>
     </div>
   );

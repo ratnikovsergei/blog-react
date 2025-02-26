@@ -1,3 +1,3 @@
-export const ErrorMessage = ({ children }) => {
+export const AuthFormError = ({ children }) => {
   return <div className="error-message">{children}</div>;
 };
