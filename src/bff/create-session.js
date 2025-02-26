@@ -1,5 +1,5 @@
 import { removeComment } from './session-actions';
-import { ROLE_ID } from '../constants';
+import { ROLE } from '../constants';
 
 export const createSession = (roleId) => {
   const session = {
@@ -9,19 +9,19 @@ export const createSession = (roleId) => {
   };
 
   switch (roleId) {
-    case ROLE_ID.ADMIN: {
+    case ROLE.ADMIN: {
       session.removeComment = removeComment;
       break;
     }
-    case ROLE_ID.MODERATOR: {
+    case ROLE.MODERATOR: {
       session.removeComment = removeComment;
       break;
     }
-    case ROLE_ID.READER: {
+    case ROLE.READER: {
       break;
     }
     default:
-    // nothing to do here
+    // nothing to do
   }
 
   return session;
