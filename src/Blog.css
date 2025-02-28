@@ -91,6 +91,12 @@ a {
     }
   }
 
+  .error-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .error-message {
     width: 100%;
     background-color: rgba(249, 99, 99, 0.5);
@@ -98,5 +104,73 @@ a {
     font-size: 16px;
     padding: 5px;
     margin-top: 10px;
+  }
+
+  .h2 {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 500;
+    margin: 20px;
+  }
+
+  .users-table-container {
+    width: 580px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .users-table-header {
+    display: flex;
+    margin-bottom: 5px;
+    font-weight: 500;
+
+    & .login-column {
+      width: 190px;
+      padding-left: 15px;
+    }
+
+    & .registered-at-column {
+      width: 190px;
+    }
+
+    & .role-column {
+      width: 190px;
+      margin-left: 10px;
+    }
+  }
+
+  .table-row {
+    margin-bottom: 5px;
+  }
+
+  .user-data-row {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 2px;
+    height: 40px;
+    width: 550px;
+    font-size: 16px;
+    padding-top: 5px;
+
+    & .login-column {
+      width: 190px;
+      padding-left: 15px;
+    }
+
+    & .registered-at-column {
+      width: 190px;
+      padding-left: 30px;
+    }
+
+    & .role-column {
+      width: 170px;
+      margin-left: 50px;
+    }
+  }
+
+  .role-selector {
+    border: 1px solid black;
+    font-size: 14px;
   }
 }

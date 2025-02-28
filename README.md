@@ -27,4 +27,4 @@
 - user: id, login, roleId/ session
 - posts: [id, title, imageUrl, publishedAt, commentsCount]
 - post: id, title, imageUrl, content, publishedAt, comments: [id, author, content, publishedAt]
-- users: [id, login, registredAt, role]
+- users: user[id, login, registredAt, role]

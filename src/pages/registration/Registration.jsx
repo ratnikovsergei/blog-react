@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Input, Button, AuthFormError } from '../../ui';
+import { H2, Input, Button, AuthFormError } from '../../ui';
 import { useResetForm } from '../../hooks';
 import { server } from '../../bff';
 import { setUser } from '../../store/actions';
@@ -71,7 +71,7 @@ export const Registration = () => {
 
   return (
     <div className="authform">
-      <span className="text-2xl text-center font-bold m-5">Регистрация</span>
+      <H2>Регистрация</H2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"
