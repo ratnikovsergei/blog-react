@@ -2,10 +2,12 @@ import { ROLE } from '../constants';
 import { sessions } from './../sessions';
 import { deleteUser } from '../api';
 
-export const removeUser = (userSession, userId) => {
+export const removeUser = async (hash, userId) => {
   const accessRoles = [ROLE.ADMIN];
 
-  if (!sessions.access(userSession, accessRoles)) {
+  const access = await sessions.access(hash, accessRoles);
+
+  if (!access) {
     return {
       error: 'У вас нет доступа к данному разделу.',
       response: null,

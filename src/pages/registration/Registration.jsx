@@ -58,6 +58,7 @@ export const Registration = () => {
         return;
       }
       dispatch(setUser(response));
+      sessionStorage.setItem('userData', JSON.stringify(response));
     });
   };
 

@@ -28,8 +28,9 @@ a {
     background-color: #fff;
     display: flex;
     justify-content: space-between;
-    padding: 15px 40px;
+    padding: 20px 40px;
     box-shadow: 0px 5px 30px #000;
+    z-index: 10;
   }
 
   .footer {
@@ -40,6 +41,12 @@ a {
     justify-content: space-between;
     padding: 15px 40px;
     box-shadow: 0px 5px 30px #000;
+  }
+
+  .page {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    padding: 50px;
   }
 
   .cp-buttons {
@@ -107,10 +114,10 @@ a {
   }
 
   .h2 {
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
     font-weight: 500;
-    margin: 20px;
+    margin: 20px auto;
   }
 
   .users-table-container {
@@ -172,5 +179,51 @@ a {
   .role-selector {
     border: 1px solid black;
     font-size: 14px;
+  }
+
+  .post-container {
+    margin: 40px 0;
+    padding: 0 20px;
+  }
+
+  .post-content {
+    & img {
+      float: left;
+      margin: 0 20px 10px 0;
+    }
+  }
+
+  .post-panel {
+    display: flex;
+    justify-content: space-between;
+    margin: -10px 0 10px;
+    font-size: 16px;
+
+    & .post-panel-buttons {
+      font-size: 18px;
+    }
+  }
+
+  .post-text {
+    font-size: 15px;
+  }
+
+  .comments {
+    margin-top: 20px;
+  }
+
+  .new-comment {
+    display: flex;
+    justify-content: center;
+  }
+
+  .new-comment-text {
+    width: 550px;
+    height: 100px;
+    border: 1px solid;
+    resize: none;
+    padding: 5px;
+    font-size: 14px;
+    outline: none;
   }
 }

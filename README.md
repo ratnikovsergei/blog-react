@@ -16,7 +16,7 @@
 - users: id / login / password / registered_ad / role_id
 - roles: id / name
 - posts: id / title / image_url / content / published_at
-- comments: id / author_id / post_id / content
+- comments: id / author_id / post_id / content / published_at
 
 <!-- Схема состояния на BFF: -->
 
