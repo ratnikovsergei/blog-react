@@ -1,4 +1,28 @@
-export const Comment = ({ id, author, content, publishedAt }) => {
+import { useDispatch } from 'react-redux';
+import { useServerRequest } from '../../../../../../hooks';
+import {
+  removeCommentAsync,
+  openModal,
+  CLOSE_MODAL,
+} from '../../../../../../store/actions';
+
+export const Comment = ({ postId, id, author, content, publishedAt }) => {
+  const dispatch = useDispatch();
+  const requestServer = useServerRequest();
+
+  const onCommentRemove = (id) => {
+    dispatch(
+      openModal({
+        text: 'Удалить комментарий?',
+        onConfirm: () => {
+          dispatch(removeCommentAsync(requestServer, postId, id));
+          dispatch(CLOSE_MODAL);
+        },
+        onCancel: () => dispatch(CLOSE_MODAL),
+      })
+    );
+  };
+
   return (
     <div className="user-comment">
       <div className="user-comment-wrapper">
@@ -12,14 +36,12 @@ export const Comment = ({ id, author, content, publishedAt }) => {
             {publishedAt}
           </div>
         </div>
-        <div className="user-comment-text">{content}</div>
+        <div className="text-[15px]">{content}</div>
       </div>
       <i
-        className="fa fa-trash-o cursor-pointer"
+        className="fa fa-trash-o delete-comment-btn"
         aria-hidden="true"
-        onClick={() => {
-          /* TODO - удалить комментарий */
-        }}
+        onClick={() => onCommentRemove(id)}
       ></i>
     </div>
   );

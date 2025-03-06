@@ -30,6 +30,7 @@ export const Comments = ({ comments, postId }) => {
           aria-hidden="true"
           onClick={() => {
             onNewCommentAdd(userId, postId, newComment);
+            setNewComment('');
           }}
         ></i>
       </div>
@@ -37,6 +38,7 @@ export const Comments = ({ comments, postId }) => {
         {comments.map(({ id, author, content, publishedAt }) => (
           <Comment
             key={id}
+            postId={postId}
             id={id}
             author={author}
             content={content}

@@ -30,7 +30,6 @@ a {
     justify-content: space-between;
     padding: 20px 40px;
     box-shadow: 0px 5px 30px #000;
-    z-index: 10;
   }
 
   .footer {
@@ -117,7 +116,12 @@ a {
     font-size: 22px;
     text-align: center;
     font-weight: 500;
-    margin: 20px auto;
+  }
+
+  .h3 {
+    font-size: 26px;
+    text-align: center;
+    font-weight: 600;
   }
 
   .users-table-container {
@@ -196,7 +200,7 @@ a {
   .post-panel {
     display: flex;
     justify-content: space-between;
-    margin: -10px 0 10px;
+    margin: 0px 0 10px;
     font-size: 16px;
 
     & .post-panel-buttons {
@@ -212,6 +216,10 @@ a {
     margin-top: 20px;
   }
 
+  .comments-list {
+    margin-top: 20px;
+  }
+
   .new-comment {
     display: flex;
     justify-content: center;
@@ -220,10 +228,69 @@ a {
   .new-comment-text {
     width: 550px;
     height: 100px;
-    border: 1px solid;
+    border: 1px solid lightgray;
     resize: none;
     padding: 5px;
     font-size: 14px;
     outline: none;
+  }
+
+  .user-comment {
+    display: flex;
+    justify-content: center;
+  }
+
+  .user-comment-wrapper {
+    width: 550px;
+    border: 1px solid gray;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .user-comment-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  .delete-comment-btn {
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 8px;
+  }
+
+  .modal-wrapper {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-box {
+    background-color: whitesmoke;
+    border: 2px solid;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    top: 40%;
+    transform: translate(0, -50%);
+    width: 350px;
+    z-index: 30;
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
   }
 }

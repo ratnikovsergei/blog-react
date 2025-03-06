@@ -4,8 +4,6 @@ export const sessions = {
   create(user) {
     const hash = Math.random().toFixed(50);
 
-    console.log('create', user);
-
     addSession(hash, user);
 
     return hash;
@@ -21,7 +19,6 @@ export const sessions = {
   },
   async access(hash, accessRoles) {
     const dbSession = await getSession(hash);
-    console.log('sessions', hash, accessRoles, dbSession);
     return !!dbSession.user && accessRoles.includes(dbSession.user.roleId);
   },
 };

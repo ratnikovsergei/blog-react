@@ -1,20 +1,20 @@
-import { addComment, getComments, getPost } from '../api';
+import { deleteComment, getComments, getPost } from '../api';
 import { ROLE } from '../constants';
 import { sessions } from '../sessions';
 
-export const addPostComment = async (hash, userId, postId, content) => {
-  const accessRoles = [ROLE.ADMIN, ROLE.MODERATOR, ROLE.READER];
+export const removePostComment = async (hash, postId, commentId) => {
+  const accessRoles = [ROLE.ADMIN, ROLE.MODERATOR];
 
   const access = await sessions.access(hash, accessRoles);
 
   if (!access) {
     return {
-      error: 'Для оставления комментария войдите или зарегистрируйтесь.',
+      error: 'Удалять комментарии могут только администратор и модератор.',
       response: null,
     };
   }
 
-  await addComment(userId, postId, content);
+  await deleteComment(commentId);
 
   const post = await getPost(postId);
 
