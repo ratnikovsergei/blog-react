@@ -213,6 +213,13 @@ a {
     white-space: pre-line;
   }
 
+  .post-text-editing {
+    font-size: 15px;
+    white-space: pre-line;
+    border: 1px solid gray;
+    min-height: 100px;
+  }
+
   .comments {
     margin-top: 20px;
   }

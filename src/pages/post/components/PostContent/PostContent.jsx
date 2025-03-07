@@ -10,6 +10,7 @@ export const PostContent = ({ post: { id, title, imageUrl, content, publishedAt 
       <img src={imageUrl || null} alt={title} />
       <H2>{title}</H2>
       <PostPanel
+        id={id}
         publishedAt={publishedAt}
         editButton={
           <i

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PostPanel } from '../PostPanel/PostPanel';
@@ -8,34 +8,45 @@ import { savePostAsync } from '../../../../store/actions';
 import { useServerRequest } from '../../../../hooks';
 
 export const PostForm = ({ post: { id, title, imageUrl, content, publishedAt } }) => {
-  const imageRef = useRef(null);
-  const titleRef = useRef(null);
+  const [imageUrlValue, setImageUrlValue] = useState(imageUrl);
+  const [titleValue, setTitleValue] = useState(title);
   const contentRef = useRef(null);
+
+  useLayoutEffect(() => {
+    setImageUrlValue(imageUrl);
+    setTitleValue(title);
+  }, [imageUrl, title]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const requestServer = useServerRequest();
 
+  const onImageChange = ({ target }) => setImageUrlValue(target.value);
+  const onTitleChange = ({ target }) => setTitleValue(target.value);
+
   const onSave = () => {
-    const newImageUrl = imageRef.current.value;
-    const newTitle = titleRef.current.value;
     const newContent = sanitizeContent(contentRef.current.innerHTML);
 
     dispatch(
       savePostAsync(requestServer, {
         id,
-        imageUrl: newImageUrl,
-        title: newTitle,
+        imageUrl: imageUrlValue,
+        title: titleValue,
         content: newContent,
       })
-    ).then(() => navigate(`/post/${id}`));
+    ).then(({ id }) => navigate(`/post/${id}`));
   };
 
   return (
     <div className="post-content">
-      <Input ref={imageRef} defaultValue={imageUrl} placeholder="Изображение..." />
-      <Input ref={titleRef} defaultValue={title} placeholder="Заголовок..." />
+      <Input
+        onChange={onImageChange}
+        value={imageUrlValue}
+        placeholder="Изображение..."
+      />
+      <Input onChange={onTitleChange} value={titleValue} placeholder="Заголовок..." />
       <PostPanel
+        id={id}
         publishedAt={publishedAt}
         editButton={
           <i
@@ -47,7 +58,7 @@ export const PostForm = ({ post: { id, title, imageUrl, content, publishedAt } }
       />
       <div
         ref={contentRef}
-        className="post-text"
+        className="post-text-editing"
         contentEditable={true}
         suppressContentEditableWarning={true}
       >
