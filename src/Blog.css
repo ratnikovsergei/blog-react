@@ -301,4 +301,26 @@ a {
     justify-content: center;
     margin-top: 10px;
   }
+
+  .posts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .post-card {
+    width: 282px;
+    height: 230px;
+    border: 1px solid black;
+  }
+
+  .post-card-footer {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .post-card-info {
+    display: flex;
+    justify-content: space-between;
+  }
 }
