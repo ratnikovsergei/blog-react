@@ -323,4 +323,29 @@ a {
     display: flex;
     justify-content: space-between;
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+
+    & .current-page {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 10px;
+    }
+  }
+
+  .pagination-button {
+    cursor: pointer;
+    margin: 10px;
+    font-size: 14px;
+    text-decoration: underline;
+    color: rgba(0, 0, 0);
+  }
+
+  .pagination-button:disabled {
+    color: rgba(0, 0, 0, 0.3);
+    cursor: default;
+  }
 }

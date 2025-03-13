@@ -6,7 +6,7 @@ export const PostCard = ({ id, title, imageUrl, publishedAt, commentsCount }) =>
   return (
     <div className="post-card">
       <Link to={`/post/${id}`}>
-        <img src={imageUrl} alt={title} className="border" />
+        <img src={imageUrl} alt={title} />
         <div className="post-card-footer">
           <span className="text-sm font-bold">{title}</span>
           <div className="post-card-info">
