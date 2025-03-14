@@ -8,7 +8,7 @@ export const fetchPosts = async (searchPhrase, page, limit) => {
   ]);
   return {
     error: null,
-    response: {
+    res: {
       posts: posts.map((post) => ({
         ...post,
         commentsCount: getCommentsCount(comments, post.id),

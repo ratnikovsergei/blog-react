@@ -10,12 +10,12 @@ export const removeUser = async (hash, userId) => {
   if (!access) {
     return {
       error: 'У вас нет доступа к данному разделу.',
-      response: null,
+      res: null,
     };
   }
 
   return deleteUser(userId).then(() => ({
     error: null,
-    response: true,
+    res: true,
   }));
 };

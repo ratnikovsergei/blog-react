@@ -10,7 +10,7 @@ export const savePost = async (hash, newPostData) => {
   if (!access) {
     return {
       error: 'Вы не моете этого делать.',
-      response: null,
+      res: null,
     };
   }
 
@@ -19,6 +19,6 @@ export const savePost = async (hash, newPostData) => {
 
   return {
     error: null,
-    response: savedPost,
+    res: savedPost,
   };
 };

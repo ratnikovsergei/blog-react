@@ -10,7 +10,7 @@ export const removePostComment = async (hash, postId, commentId) => {
   if (!access) {
     return {
       error: 'Удалять комментарии могут только администратор и модератор.',
-      response: null,
+      res: null,
     };
   }
 
@@ -22,7 +22,7 @@ export const removePostComment = async (hash, postId, commentId) => {
 
   return {
     error: null,
-    response: {
+    res: {
       ...post,
       comments,
     },

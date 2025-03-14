@@ -47,13 +47,13 @@ export const Authorization = () => {
   useResetForm(reset);
 
   const onSubmit = ({ login, password }) => {
-    server.authorize(login, password).then(({ error, response }) => {
+    server.authorize(login, password).then(({ error, res }) => {
       if (error) {
         setServerError(`Ошибка: ${error}`);
         return;
       }
-      dispatch(setUser(response));
-      sessionStorage.setItem('userData', JSON.stringify(response));
+      dispatch(setUser(res));
+      sessionStorage.setItem('userData', JSON.stringify(res));
     });
   };
 

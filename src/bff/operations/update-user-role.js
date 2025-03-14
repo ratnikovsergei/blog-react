@@ -10,7 +10,7 @@ export const updateUserRole = async (hash, userId, newUserRoleId) => {
   if (!access) {
     return {
       error: 'У вас нет доступа к данному разделу.',
-      response: null,
+      res: null,
     };
   }
 
@@ -18,6 +18,6 @@ export const updateUserRole = async (hash, userId, newUserRoleId) => {
 
   return {
     error: null,
-    response: true,
+    res: true,
   };
 };

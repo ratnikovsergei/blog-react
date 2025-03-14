@@ -10,7 +10,7 @@ export const addPostComment = async (hash, userId, postId, content) => {
   if (!access) {
     return {
       error: 'Для оставления комментария войдите или зарегистрируйтесь.',
-      response: null,
+      res: null,
     };
   }
 
@@ -22,7 +22,7 @@ export const addPostComment = async (hash, userId, postId, content) => {
 
   return {
     error: null,
-    response: {
+    res: {
       ...post,
       comments,
     },

@@ -10,7 +10,7 @@ export const fetchRoles = async (hash) => {
   if (!access) {
     return {
       error: 'У вас нет доступа к данному разделу.',
-      response: null,
+      res: null,
     };
   }
 
@@ -18,6 +18,6 @@ export const fetchRoles = async (hash) => {
 
   return {
     error: null,
-    response: roles,
+    res: roles,
   };
 };

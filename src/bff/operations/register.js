@@ -7,7 +7,7 @@ export const register = async (regLogin, regPassword) => {
   if (existedUser) {
     return {
       error: 'Такой логин уже занят!',
-      response: null,
+      res: null,
     };
   }
 
@@ -15,7 +15,7 @@ export const register = async (regLogin, regPassword) => {
 
   return {
     error: null,
-    response: {
+    res: {
       id: user.id,
       login: user.login,
       roleId: user.role_id,

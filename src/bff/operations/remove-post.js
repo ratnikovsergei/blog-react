@@ -10,7 +10,7 @@ export const removePost = async (hash, id) => {
   if (!access) {
     return {
       error: 'Удалять статьи может только администратор.',
-      response: null,
+      res: null,
     };
   }
 
@@ -22,6 +22,6 @@ export const removePost = async (hash, id) => {
 
   return {
     error: null,
-    response: true,
+    res: true,
   };
 };

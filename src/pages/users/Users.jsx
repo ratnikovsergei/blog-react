@@ -1,33 +1,44 @@
 import { useEffect, useState } from 'react';
-import { H2 } from '../../ui';
-import { UserRow } from './components';
-import { Content } from '../../components';
-import { useServerRequest } from '../../hooks';
+import { useSelector } from 'react-redux';
 import { ROLE } from '../../constants';
+import { UserRow } from './components';
+import { PrivateContent } from '../../components';
+import { useServerRequest } from '../../hooks';
+import { selectUserRole } from '../../store/selectors';
+import { checkAccess } from '../../utils';
 
 export const Users = () => {
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [errorMessage, seterrorMessage] = useState(null);
   const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
+  const userRole = useSelector(selectUserRole);
 
   const requestServer = useServerRequest();
 
   useEffect(() => {
+    if (!checkAccess([ROLE.ADMIN], userRole)) {
+      return;
+    }
+
     Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(
-      ([usersResponse, rolesResponse]) => {
-        if (usersResponse.error || rolesResponse.error) {
-          seterrorMessage(usersResponse.error || rolesResponse.error);
+      ([usersres, rolesres]) => {
+        if (usersres.error || rolesres.error) {
+          seterrorMessage(usersres.error || rolesres.error);
           return;
         }
 
-        setUsers(usersResponse.response);
-        setRoles(rolesResponse.response);
+        setUsers(usersres.res);
+        setRoles(rolesres.res);
       }
     );
-  }, [requestServer, shouldUpdateUserList]);
+  }, [requestServer, shouldUpdateUserList, userRole]);
 
   const onUserRemove = (userId) => {
+    if (!checkAccess([ROLE.ADMIN], userRole)) {
+      return;
+    }
+
     requestServer('removeUser', userId).then(() => {
       setShouldUpdateUserList(!shouldUpdateUserList);
     });
@@ -35,8 +46,8 @@ export const Users = () => {
 
   return (
     <div>
-      <Content error={errorMessage}>
-        <H2>Пользователи</H2>
+      <PrivateContent access={[ROLE.ADMIN]} serverError={errorMessage}>
+        <div className="text-center text-2xl font-semibold mb-5">Пользователи</div>
         <div className="users-table-container">
           <div className="users-table-header">
             <div className="login-column">Логин</div>
@@ -55,7 +66,7 @@ export const Users = () => {
             />
           ))}
         </div>
-      </Content>
+      </PrivateContent>
     </div>
   );
 };
