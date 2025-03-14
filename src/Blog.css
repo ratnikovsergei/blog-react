@@ -302,10 +302,32 @@ a {
     margin-top: 10px;
   }
 
+  .search-bar {
+    display: flex;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+    margin: 30px auto;
+
+    & .search-input {
+      width: 280px;
+      outline: none;
+      font-size: 14px;
+      padding: 5px;
+    }
+  }
+
   .posts-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+  }
+
+  .no-posts-found {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 300;
   }
 
   .post-card {
@@ -328,6 +350,10 @@ a {
     display: flex;
     justify-content: center;
     margin: 10px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 150px;
 
     & .current-page {
       font-size: 14px;
