@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const SearchBar = ({ searchPhrase, onChange }) => {
   return (
     <div className="search-bar">
@@ -13,4 +15,9 @@ export const SearchBar = ({ searchPhrase, onChange }) => {
       </div>
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  searchPhrase: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

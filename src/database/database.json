@@ -6,37 +6,23 @@
       "password": "qwerty123",
       "registered_at": "2050-09-22",
       "role_id": 0
-    },
-    {
-      "id": "a7a0",
-      "login": "ivan",
-      "password": "qwerty123",
-      "registered_at": "2050-01-31 20:12",
-      "role_id": 1
-    },
-    {
-      "login": "petr",
-      "password": "qwerty123",
-      "registered_at": "2042-03-10 07:54",
-      "role_id": 2,
-      "id": "zIkNJPq"
     }
   ],
   "roles": [
     {
-      "id": "0",
+      "id": 0,
       "name": "Администратор"
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "Модератор"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Читатель"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Гость"
     }
   ],
@@ -170,17 +156,5 @@
       "id": "xXiEss5"
     }
   ],
-  "sessions": [
-    {
-      "hash": "0.83628097615044927337635272124316543340682983398438",
-      "user": {
-        "id": "a7a0",
-        "login": "ivan",
-        "password": "qwerty123",
-        "registeredAt": "2050-01-31 20:12",
-        "roleId": 1
-      },
-      "id": 1
-    }
-  ]
+  "sessions": []
 }

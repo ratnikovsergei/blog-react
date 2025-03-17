@@ -6,6 +6,7 @@ import { Input } from '../../../../ui';
 import { sanitizeContent } from './utils';
 import { savePostAsync } from '../../../../store/actions';
 import { useServerRequest } from '../../../../hooks';
+import { PROP_TYPE } from '../../../../constants';
 
 export const PostForm = ({ post: { id, title, imageUrl, content, publishedAt } }) => {
   const [imageUrlValue, setImageUrlValue] = useState(imageUrl);
@@ -66,4 +67,8 @@ export const PostForm = ({ post: { id, title, imageUrl, content, publishedAt } }
       </div>
     </div>
   );
+};
+
+PostForm.propTypes = {
+  post: PROP_TYPE.POST.isRequired,
 };

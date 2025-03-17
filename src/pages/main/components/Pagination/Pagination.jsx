@@ -1,4 +1,5 @@
 import { PaginationButton } from '../../../../ui';
+import PropTypes from 'prop-types';
 
 export const Pagination = ({ page, lastPage, setPage }) => {
   return (
@@ -18,4 +19,10 @@ export const Pagination = ({ page, lastPage, setPage }) => {
       </PaginationButton>
     </div>
   );
+};
+
+Pagination.propTypes = {
+  page: PropTypes.number.isRequired,
+  lastPage: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
 };

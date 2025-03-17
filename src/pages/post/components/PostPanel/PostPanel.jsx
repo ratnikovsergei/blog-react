@@ -5,6 +5,7 @@ import { useServerRequest } from '../../../../hooks';
 import { ROLE } from '../../../../constants';
 import { selectUserRole } from '../../../../store/selectors';
 import { checkAccess } from '../../../../utils';
+import PropTypes from 'prop-types';
 
 export const PostPanel = ({ id, publishedAt, editButton }) => {
   const dispatch = useDispatch();
@@ -49,4 +50,10 @@ export const PostPanel = ({ id, publishedAt, editButton }) => {
       )}
     </div>
   );
+};
+
+PostPanel.propTypes = {
+  id: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  editButton: PropTypes.func.isRequired,
 };

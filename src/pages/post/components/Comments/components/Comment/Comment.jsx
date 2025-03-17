@@ -7,6 +7,7 @@ import {
 } from '../../../../../../store/actions';
 import { selectUserRole } from '../../../../../../store/selectors';
 import { ROLE } from '../../../../../../constants';
+import PropTypes from 'prop-types';
 
 export const Comment = ({ postId, id, author, content, publishedAt }) => {
   const dispatch = useDispatch();
@@ -52,4 +53,12 @@ export const Comment = ({ postId, id, author, content, publishedAt }) => {
       )}
     </div>
   );
+};
+
+Comment.propTypes = {
+  postId: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
 };

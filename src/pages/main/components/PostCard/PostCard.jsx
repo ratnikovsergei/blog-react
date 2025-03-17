@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const PostCard = ({ id, title, imageUrl, publishedAt, commentsCount }) => {
   const dateOfPublish = publishedAt.substring(0, 10);
@@ -21,4 +22,12 @@ export const PostCard = ({ id, title, imageUrl, publishedAt, commentsCount }) =>
       </Link>
     </div>
   );
+};
+
+PostCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  commentsCount: PropTypes.number.isRequired,
 };

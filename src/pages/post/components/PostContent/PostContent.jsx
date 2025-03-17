@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { H2 } from '../../../../ui';
 import { PostPanel } from '../PostPanel/PostPanel';
+import { PROP_TYPE } from '../../../../constants';
 
 export const PostContent = ({ post: { id, title, imageUrl, content, publishedAt } }) => {
   const navigate = useNavigate();
@@ -23,4 +24,8 @@ export const PostContent = ({ post: { id, title, imageUrl, content, publishedAt 
       <div className="post-text">{content}</div>
     </div>
   );
+};
+
+PostContent.propTypes = {
+  post: PROP_TYPE.POST.isRequired,
 };
