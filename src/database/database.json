@@ -12,7 +12,14 @@
       "login": "ivan",
       "password": "qwerty123",
       "registered_at": "2050-01-31 20:12",
-      "role_id": 2
+      "role_id": 1
+    },
+    {
+      "login": "petr",
+      "password": "qwerty123",
+      "registered_at": "2042-03-10 07:54",
+      "role_id": 2,
+      "id": "zIkNJPq"
     }
   ],
   "roles": [
@@ -128,31 +135,52 @@
   ],
   "comments": [
     {
-      "id": "9008",
-      "author_id": "001",
-      "post_id": "002",
-      "published_at": "2048-08-02 16:15",
-      "content": "классная статья!"
-    },
-    {
       "id": "138e",
       "author_id": "001",
       "post_id": "003",
       "published_at": "2053-08-17 02:28",
       "content": "это тоже отличная статья"
+    },
+    {
+      "author_id": "zIkNJPq",
+      "post_id": "002",
+      "published_at": "2046-03-01 14:54",
+      "content": "вроде починили",
+      "id": "RVYPBh5"
+    },
+    {
+      "author_id": "a7a0",
+      "post_id": "002",
+      "published_at": "2057-05-07 07:31",
+      "content": "ага, все работает",
+      "id": "sdRSn6K"
+    },
+    {
+      "author_id": "001",
+      "post_id": "002",
+      "published_at": "2064-11-19 07:28",
+      "content": "оказалось, что нет",
+      "id": "LliEi33"
+    },
+    {
+      "author_id": "001",
+      "post_id": "002",
+      "published_at": "2053-01-01 21:13",
+      "content": "ну теперь то точно все работает)\n",
+      "id": "xXiEss5"
     }
   ],
   "sessions": [
     {
-      "id": "99c7",
-      "hash": "0.41667730257866275600520111765945330262184143066406",
+      "hash": "0.83628097615044927337635272124316543340682983398438",
       "user": {
-        "id": "001",
-        "login": "sergei",
+        "id": "a7a0",
+        "login": "ivan",
         "password": "qwerty123",
-        "registeredAt": "2050-09-22",
-        "roleId": 0
-      }
+        "registeredAt": "2050-01-31 20:12",
+        "roleId": 1
+      },
+      "id": 1
     }
   ]
 }

@@ -1,14 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useServerRequest } from '../../../../../../hooks';
 import {
   removeCommentAsync,
   openModal,
   CLOSE_MODAL,
 } from '../../../../../../store/actions';
+import { selectUserRole } from '../../../../../../store/selectors';
+import { ROLE } from '../../../../../../constants';
 
 export const Comment = ({ postId, id, author, content, publishedAt }) => {
   const dispatch = useDispatch();
   const requestServer = useServerRequest();
+  const userRole = useSelector(selectUserRole);
 
   const onCommentRemove = (id) => {
     dispatch(
@@ -22,6 +25,8 @@ export const Comment = ({ postId, id, author, content, publishedAt }) => {
       })
     );
   };
+
+  const isAdminOrModerator = [ROLE.ADMIN, ROLE.MODERATOR].includes(userRole);
 
   return (
     <div className="user-comment">
@@ -38,11 +43,13 @@ export const Comment = ({ postId, id, author, content, publishedAt }) => {
         </div>
         <div className="text-[15px]">{content}</div>
       </div>
-      <i
-        className="fa fa-trash-o delete-comment-btn"
-        aria-hidden="true"
-        onClick={() => onCommentRemove(id)}
-      ></i>
+      {isAdminOrModerator && (
+        <i
+          className="fa fa-trash-o delete-comment-btn"
+          aria-hidden="true"
+          onClick={() => onCommentRemove(id)}
+        ></i>
+      )}
     </div>
   );
 };

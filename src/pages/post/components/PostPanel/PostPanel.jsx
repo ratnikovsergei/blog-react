@@ -1,12 +1,16 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { openModal, removePostAsync, CLOSE_MODAL } from '../../../../store/actions';
 import { useServerRequest } from '../../../../hooks';
+import { ROLE } from '../../../../constants';
+import { selectUserRole } from '../../../../store/selectors';
+import { checkAccess } from '../../../../utils';
 
 export const PostPanel = ({ id, publishedAt, editButton }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const requestServer = useServerRequest();
+  const userRole = useSelector(selectUserRole);
 
   const onPostRemove = (id) => {
     dispatch(
@@ -21,6 +25,8 @@ export const PostPanel = ({ id, publishedAt, editButton }) => {
     );
   };
 
+  const isAdmin = checkAccess([ROLE.ADMIN], userRole);
+
   return (
     <div className="post-panel">
       {publishedAt ? (
@@ -29,16 +35,18 @@ export const PostPanel = ({ id, publishedAt, editButton }) => {
           {publishedAt}
         </div>
       ) : null}
-      <div className="post-panel-buttons">
-        {editButton}
-        {publishedAt ? (
-          <i
-            className="fa fa-trash-o ml-2 cursor-pointer"
-            aria-hidden="true"
-            onClick={() => onPostRemove(id)}
-          ></i>
-        ) : null}
-      </div>
+      {isAdmin && (
+        <div className="post-panel-buttons">
+          {editButton}
+          {publishedAt ? (
+            <i
+              className="fa fa-trash-o ml-2 cursor-pointer"
+              aria-hidden="true"
+              onClick={() => onPostRemove(id)}
+            ></i>
+          ) : null}
+        </div>
+      )}
     </div>
   );
 };

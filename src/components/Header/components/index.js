@@ -1,3 +1,3 @@
-export * from './logo';
-export * from './description';
-export * from './control-panel';
+export * from './logo/logo';
+export * from './description/description';
+export * from './control-panel/control-panel';

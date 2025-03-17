@@ -1,13 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button } from '../../../ui';
-import { ROLE } from '../../../constants';
+import { Button } from '../../../../ui';
+import { ROLE } from '../../../../constants';
 import {
   selectUserRole,
   selectUserLogin,
   selectUserSession,
-} from '../../../store/selectors';
-import { logout } from '../../../store/actions';
+} from '../../../../store/selectors';
+import { logout } from '../../../../store/actions';
+import { checkAccess } from '../../../../utils';
 
 export const ControlPanel = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,8 @@ export const ControlPanel = () => {
     sessionStorage.removeItem('userData');
   };
 
+  const isAdmin = checkAccess([ROLE.ADMIN], roleId);
+
   return (
     <div>
       <div className="flex justify-end">
@@ -30,9 +33,9 @@ export const ControlPanel = () => {
           </Button>
         ) : (
           <div className="font-semibold text-[20px]">
-            {login}{' '}
+            {login}
             <button onClick={onLogout}>
-              <i className="fa fa-sign-out cursor-pointer" aria-hidden="true"></i>
+              <i className="fa fa-sign-out cursor-pointer ml-1" aria-hidden="true"></i>
             </button>
           </div>
         )}
@@ -41,12 +44,16 @@ export const ControlPanel = () => {
         <button onClick={() => navigate(-1)} className="cp-buttons mr-[15px]">
           <i className="fa fa-backward" aria-hidden="true"></i>
         </button>
-        <Link to="/post" className="cp-buttons mr-[15px]">
-          <i className="fa fa-file-text-o" aria-hidden="true"></i>
-        </Link>
-        <Link to="/users" className="cp-buttons">
-          <i className="fa fa-users" aria-hidden="true"></i>
-        </Link>
+        {isAdmin && (
+          <>
+            <Link to="/post" className="cp-buttons mr-[15px]">
+              <i className="fa fa-file-text-o" aria-hidden="true"></i>
+            </Link>
+            <Link to="/users" className="cp-buttons">
+              <i className="fa fa-users" aria-hidden="true"></i>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
