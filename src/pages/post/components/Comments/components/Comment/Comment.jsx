@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useServerRequest } from '../../../../../../hooks';
 import {
   removeCommentAsync,
   openModal,
@@ -11,7 +10,6 @@ import PropTypes from 'prop-types';
 
 export const Comment = ({ postId, id, author, content, publishedAt }) => {
   const dispatch = useDispatch();
-  const requestServer = useServerRequest();
   const userRole = useSelector(selectUserRole);
 
   const onCommentRemove = (id) => {
@@ -19,7 +17,7 @@ export const Comment = ({ postId, id, author, content, publishedAt }) => {
       openModal({
         text: 'Удалить комментарий?',
         onConfirm: () => {
-          dispatch(removeCommentAsync(requestServer, postId, id));
+          dispatch(removeCommentAsync(postId, id));
           dispatch(CLOSE_MODAL);
         },
         onCancel: () => dispatch(CLOSE_MODAL),

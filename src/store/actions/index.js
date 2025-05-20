@@ -2,7 +2,7 @@ export * from './action-type';
 export * from './set-user';
 export * from './logout';
 export * from './load-post-async';
-export * from './set-post-data';
+export * from './set-post-data.js';
 export * from './add-comment-async';
 export * from './remove-comment-async';
 export * from './close-modal';

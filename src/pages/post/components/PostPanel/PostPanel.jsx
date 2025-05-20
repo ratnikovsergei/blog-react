@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { openModal, removePostAsync, CLOSE_MODAL } from '../../../../store/actions';
-import { useServerRequest } from '../../../../hooks';
 import { ROLE } from '../../../../constants';
 import { selectUserRole } from '../../../../store/selectors';
 import { checkAccess } from '../../../../utils';
@@ -10,7 +9,6 @@ import PropTypes from 'prop-types';
 export const PostPanel = ({ id, publishedAt, editButton }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const requestServer = useServerRequest();
   const userRole = useSelector(selectUserRole);
 
   const onPostRemove = (id) => {
@@ -18,7 +16,7 @@ export const PostPanel = ({ id, publishedAt, editButton }) => {
       openModal({
         text: 'Удалить статью?',
         onConfirm: () => {
-          dispatch(removePostAsync(requestServer, id)).then(() => navigate('/'));
+          dispatch(removePostAsync(id)).then(() => navigate('/'));
           dispatch(CLOSE_MODAL);
         },
         onCancel: () => dispatch(CLOSE_MODAL),

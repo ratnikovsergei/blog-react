@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AppColumn, Header, Footer, Error } from './components';
@@ -13,7 +13,7 @@ const Page = ({ children }) => <div className="page">{children}</div>;
 export const Blog = () => {
   const dispatch = useDispatch();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const currentUserDataJSON = sessionStorage.getItem('userData');
 
     if (!currentUserDataJSON) {

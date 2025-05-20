@@ -144,17 +144,22 @@
     {
       "author_id": "001",
       "post_id": "002",
-      "published_at": "2064-11-19 07:28",
-      "content": "оказалось, что нет",
-      "id": "LliEi33"
-    },
-    {
-      "author_id": "001",
-      "post_id": "002",
       "published_at": "2053-01-01 21:13",
       "content": "ну теперь то точно все работает)\n",
       "id": "xXiEss5"
     }
   ],
-  "sessions": []
+  "sessions": [
+    {
+      "hash": "0.85568608516699018462503545379149727523326873779297",
+      "user": {
+        "id": "001",
+        "login": "sergei",
+        "password": "qwerty123",
+        "registeredAt": "2050-09-22",
+        "roleId": 0
+      },
+      "id": 1
+    }
+  ]
 }

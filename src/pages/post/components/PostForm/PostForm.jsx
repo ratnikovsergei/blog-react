@@ -5,7 +5,6 @@ import { PostPanel } from '../PostPanel/PostPanel';
 import { Input } from '../../../../ui';
 import { sanitizeContent } from './utils';
 import { savePostAsync } from '../../../../store/actions';
-import { useServerRequest } from '../../../../hooks';
 import { PROP_TYPE } from '../../../../constants';
 
 export const PostForm = ({ post: { id, title, imageUrl, content, publishedAt } }) => {
@@ -20,7 +19,6 @@ export const PostForm = ({ post: { id, title, imageUrl, content, publishedAt } }
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const requestServer = useServerRequest();
 
   const onImageChange = ({ target }) => setImageUrlValue(target.value);
   const onTitleChange = ({ target }) => setTitleValue(target.value);
@@ -29,8 +27,7 @@ export const PostForm = ({ post: { id, title, imageUrl, content, publishedAt } }
     const newContent = sanitizeContent(contentRef.current.innerHTML);
 
     dispatch(
-      savePostAsync(requestServer, {
-        id,
+      savePostAsync(id, {
         imageUrl: imageUrlValue,
         title: titleValue,
         content: newContent,

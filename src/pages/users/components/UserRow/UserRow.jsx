@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useServerRequest } from '../../../../hooks';
 import PropTypes from 'prop-types';
 import { PROP_TYPE } from '../../../../constants';
+import { request } from '../../../../utils/request';
 
 export const UserRow = ({
   id,
@@ -13,14 +13,13 @@ export const UserRow = ({
 }) => {
   const [initialRoleId, setInitialRoleId] = useState(userRoleId);
   const [selectedRoleId, setSelectedRoleId] = useState(userRoleId);
-  const requestServer = useServerRequest();
 
   const onRoleChange = ({ target }) => {
     setSelectedRoleId(Number(target.value));
   };
 
   const onRoleSave = (userId, newUserRoleId) => {
-    requestServer('updateUserRole', userId, newUserRoleId).then(() => {
+    request(`/api/users/${userId}`, 'PATCH', { roleId: newUserRoleId }).then(() => {
       setInitialRoleId(newUserRoleId);
     });
   };

@@ -6,10 +6,10 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { H2, Input, Button, AuthFormError } from '../../ui';
 import { useResetForm } from '../../hooks';
-import { server } from '../../bff';
 import { setUser } from '../../store/actions';
 import { selectUserRole } from '../../store/selectors';
 import { ROLE } from '../../constants';
+import { request } from '../../utils/request';
 
 const regFormSchema = yup.object().shape({
   login: yup
@@ -52,13 +52,13 @@ export const Registration = () => {
   useResetForm(reset);
 
   const onSubmit = ({ login, password }) => {
-    server.register(login, password).then(({ error, res }) => {
+    request('/api/register', 'POST', { login, password }).then(({ error, user }) => {
       if (error) {
         setServerError(`Ошибка: ${error}`);
         return;
       }
-      dispatch(setUser(res));
-      sessionStorage.setItem('userData', JSON.stringify(res));
+      dispatch(setUser(user));
+      sessionStorage.setItem('userData', JSON.stringify(user));
     });
   };
 
